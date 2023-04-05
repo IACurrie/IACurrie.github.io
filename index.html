@@ -18,7 +18,39 @@ async function myFunction() {
 	let minimum_delay = 3
 	let maximum_added_delay = 3
 
-	const colours = ["red", "white", "black", "oraange", "green", "yellow", "pink", "purple", "blue", "gray"]
+	//const colours = ["red", "white", "black", "oraange", "green", "yellow", "pink", "purple", "blue", "gray"]
+
+	const colours = []
+
+	let cb = document.querySelector('#box_red')
+	if (cb.checked == true) {colours.push('red')}
+
+	cb = document.querySelector('#box_white')
+	if (cb.checked == true) {colours.push('white')}
+
+	cb = document.querySelector('#box_black')
+	if (cb.checked == true) {colours.push('black')}
+
+	cb = document.querySelector('#box_orange')
+	if (cb.checked == true) {colours.push('orange')}
+
+	cb = document.querySelector('#box_green')
+	if (cb.checked == true) {colours.push('green')}
+
+	cb = document.querySelector('#box_yellow')
+	if (cb.checked == true) {colours.push('yellow')}
+
+	cb = document.querySelector('#box_pink')
+	if (cb.checked == true) {colours.push('pink')}
+
+	cb = document.querySelector('#box_purple')
+	if (cb.checked == true) {colours.push('purple')}
+
+	cb = document.querySelector('#box_blue')
+	if (cb.checked == true) {colours.push('blue')}
+
+	cb = document.querySelector('#box_gray')
+	if (cb.checked == true) {colours.push('gray')}
 
 	let delay = Math.random() * maximum_added_delay
 	console.log('delay = ' + (delay + minimum_delay))
@@ -53,6 +85,17 @@ async function myFunction2() {
 
 <button type="button" onclick="myFunction()">Begin!</button>
 <button type="button" onclick="myFunction2()">Reset!</button>
+<input type="checkbox" id="box_red"> Red 
+<input type="checkbox" id="box_white"> White 
+<input type="checkbox" id="box_black"> Black 
+<input type="checkbox" id="box_orange"> Orange 
+<input type="checkbox" id="box_green"> Green 
+<input type="checkbox" id="box_yellow"> Yellow 
+<input type="checkbox" id="box_pink"> Pink 
+<input type="checkbox" id="box_purple"> Purple 
+<input type="checkbox" id="box_blue"> Blue 
+<input type="checkbox" id="box_gray"> Gray 
+
 
 </body>
 </html>
