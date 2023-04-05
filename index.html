@@ -14,43 +14,33 @@ async function sleep(ms) {
 
 async function myFunction() {
 	console.log('Starting!')
+	let milli_in_seconds = 1000
+	let minimum_delay = 3
+	let maximum_added_delay = 3
 
-	let delay = Math.random() * 3
-	console.log('delay = ', delay)
+	const colours = ["red", "white", "black", "oraange", "green", "yellow", "pink", "purple", "blue", "gray"]
 
-	let colour = Math.floor(Math.random() * 2) + 1
-	console.log('colour = ', colour)
+	let delay = Math.random() * maximum_added_delay
+	console.log('delay = ' + (delay + minimum_delay))
 
-	await sleep(3000 + (1000 * delay));
+	let colour = Math.floor(Math.random() * colours.length)
+
 	let current_colour = 0
 
-	switch(document.body.style.backgroundColor) {
-	case "white":
-		current_colour = 4
-		break
-	case "red":
-		current_colour = 0
-		break
-	case "yellow":
-		current_colour = 1
-		break
-	case "green":
-		current_colour = 2
-		break
-	}
+	current_colour = colours.indexOf(document.body.style.backgroundColor)
 
-	switch((current_colour + colour) % 3) {
-	case 0:
-		document.body.style.backgroundColor = "red";
-		break;
-	case 1:
-		document.body.style.backgroundColor = "yellow";
-		break;
-	case 2:
-		document.body.style.backgroundColor = "green";
-		break;
-	}
+	if (current_colour === undefined || current_colour == -1) {current_colour = 0}
 	
+	let selection_number = (current_colour + colour) % colours.length
+
+	let selection = colours[selection_number]
+
+	console.log('choosing = ' + selection)
+
+	await sleep(minimum_delay * milli_in_seconds + (milli_in_seconds * delay));
+
+	document.body.style.backgroundColor = selection
+
 	console.log('Done')
 }
 
