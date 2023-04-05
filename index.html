@@ -8,6 +8,41 @@
 
 <script>
 
+async function drawShape(colour, shape) {
+
+	// getting a reference to our HTML element
+	const canvas = document.querySelector('canvas')
+
+	// initiating 2D context on it
+	const c = canvas.getContext('2d')
+
+	addEventListener('resize', () => {
+	  canvas.width = innerWidth
+	  canvas.height = innerHeight
+	})
+
+	c.strokeStyle = 'white'
+	c.fillStyle = colour
+	const centerX = canvas.width / 2;
+	const centerY = canvas.height / 2;
+
+	if (shape == 'rectangle') {
+		c.rect(centerX, centerY, 150, 100)
+	}
+
+	if (shape == 'circle') {
+		const centerX = canvas.width / 2;
+		const centerY = canvas.height / 2;
+		const radius = 70;
+
+		c.beginPath();
+		c.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+	}
+
+	c.stroke()
+	c.fill()
+}
+
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -71,7 +106,11 @@ async function myFunction() {
 
 	await sleep(minimum_delay * milli_in_seconds + (milli_in_seconds * delay));
 
-	document.body.style.backgroundColor = selection
+	cb = document.querySelector('#box_rectangle')
+	if (cb.checked == true) {drawShape(selection, 'rectangle')}
+	else {drawShape(selection, 'circle')}
+
+	
 
 	console.log('Done')
 }
@@ -85,6 +124,7 @@ async function myFunction2() {
 
 <button type="button" onclick="myFunction()">Begin!</button>
 <button type="button" onclick="myFunction2()">Reset!</button>
+<br></br>
 <input type="checkbox" id="box_red"> Red 
 <input type="checkbox" id="box_white"> White 
 <input type="checkbox" id="box_black"> Black 
@@ -95,7 +135,13 @@ async function myFunction2() {
 <input type="checkbox" id="box_purple"> Purple 
 <input type="checkbox" id="box_blue"> Blue 
 <input type="checkbox" id="box_gray"> Gray 
+<br></br>
 
+<input type="checkbox" id="box_rectangle"> Rectangle 
+<input type="checkbox" id="box_circle"> Circle 
+
+
+<canvas></canvas>
 
 </body>
 </html>
