@@ -2,17 +2,67 @@
 <html>
 <body>
 
-<h1>My First JavaScript</h1>
+<h1>Hello Andrew</h1>
 
-<p id="demo">JavaScript can change the style of an HTML element.</p>
+<p id="demo">This first version will change the background colour between red, yellow and green</p>
 
 <script>
-function myFunction() {
-  document.getElementById("demo").style.fontSize = "25px";        
+
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function myFunction() {
+	console.log('Starting!')
+
+	let delay = Math.random() * 3
+	console.log('delay = ', delay)
+
+	let colour = Math.floor(Math.random() * 2) + 1
+	console.log('colour = ', colour)
+
+	await sleep(3000 + (1000 * delay));
+	let current_colour = 0
+
+	switch(document.body.style.backgroundColor) {
+	case "white":
+		current_colour = 4
+		break
+	case "red":
+		current_colour = 0
+		break
+	case "yellow":
+		current_colour = 1
+		break
+	case "green":
+		current_colour = 2
+		break
+	}
+
+	switch((current_colour + colour) % 3) {
+	case 0:
+		document.body.style.backgroundColor = "red";
+		break;
+	case 1:
+		document.body.style.backgroundColor = "yellow";
+		break;
+	case 2:
+		document.body.style.backgroundColor = "green";
+		break;
+	}
+	
+	console.log('Done')
+}
+
+async function myFunction2() {
+	console.log('Starting!')
+	document.body.style.backgroundColor = "white";
+	console.log('Done')
 }
 </script>
 
-<button type="button" onclick="myFunction()">Click Me!</button>
+<button type="button" onclick="myFunction()">Begin!</button>
+<button type="button" onclick="myFunction2()">Reset!</button>
 
 </body>
 </html>
